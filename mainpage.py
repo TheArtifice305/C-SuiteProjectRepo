@@ -1,7 +1,11 @@
 from flask import Flask, render_template, url_for
 from flask_sqlalchemy import SQLAlchemy
-mainpage = Flask(__name__)
+from flask_login import UserMixin
 
+mainpage = Flask(__name__)
+db = SQLAlchemy(mainpage)
+mainpage.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+mainpage.config['SECRET_KEY'] = 'accessplease'
 
 @mainpage.route('/')
 def home():
