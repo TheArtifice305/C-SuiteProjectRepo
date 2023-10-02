@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<form method="post">
     <h1>Register Page</h1>
     <P>Welcome to the register page! This is where students or admins will be able to
         register and create their accounts.</P>
@@ -18,11 +19,15 @@
 
     <h2 style="font-size:25px; color:red">Username</h2>
     <p style="font-family:verdana">Enter username here: </p>
+    <input name="username" id="username" required>
 
     <h3 style="font-size:25px; color:blue">Password</h3>
     <p style="font-family:'Courier New'">Enter password here: </p>
+    <input name="password" id="password" required>
 
     <a href="{{ url_for('login') }}">Already have an account? Log in!</a>
+    <h4> <input type="submit" value="Register"></h4>
+</form>
 </body>
 
 </html>
