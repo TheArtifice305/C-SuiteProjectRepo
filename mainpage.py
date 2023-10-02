@@ -4,7 +4,6 @@ from sqlalchemy.orm import DeclarativeBase
 from datetime import datetime
 from werkzeug.security import check_password_hash, generate_password_hash
 
-
 mainpage = Flask(__name__)
 
 
@@ -107,6 +106,9 @@ def register():
 
     return render_template('register.html')
 
+@mainpage.route('/post_testing', methods=['GET','POST'])
+def posting():
+    return render_template('post_testing.html')
 
 if __name__ == "__main__":
     mainpage.run(debug=True)
