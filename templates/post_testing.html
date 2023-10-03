@@ -10,15 +10,15 @@
 
 <body>
     <h1 style="font-size:30px">Post Testing Page</h1>
-    <form method="POST">
-        <p>Login </p><br>
-            <p>Value1 <input type = "text" name = "Value1" /></p>
-            <p><input type = "submit" value = "submit" name = "submit" /></p>
-        
-        </form>
-        input is {{value1}}
-        <p>Posting page is still a work in progress</p>
-    <a href="{{ url_for('home') }}">Click here to go back to homepage!</a>
+    <form action="post_testing" method="post">
+      <br>
+      <input type="text" name="post_input">
+      <br>
+      <input type="submit" value="Submit" id="submission">
+    </form>
+    <p>Your post: {{ post_input }}</p>
+    <p>Posting page is still a work in progress</p>
+    <a href="{{url_for('home')}}">Click here to go back to homepage!</a>
 </body>
 
 </html>
