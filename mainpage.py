@@ -106,8 +106,8 @@ def register():
 
     return render_template('register.html')
 
-@mainpage.route('/post_testing', methods=['GET','POST'])
-def posting():
+@mainpage.route('/post_testing', methods=['GET', 'POST'])
+def post():
     return render_template('post_testing.html')
 
 if __name__ == "__main__":
