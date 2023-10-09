@@ -5,6 +5,7 @@ from datetime import datetime
 from werkzeug.security import check_password_hash, generate_password_hash
 
 mainpage = Flask(__name__)
+mainpage.config['SECRET_KEY'] = 'accessplease'
 
 
 class Base(DeclarativeBase):
@@ -47,21 +48,17 @@ def login():
         username = request.form['username']
         password = request.form['password']
         error = None
-        user = db.execute(username)
 
         if not username:
             error = "Please enter a username."
 
-        elif not check_password_hash(user['password'], password):
+        elif not password:
             error = "Please enter a password."
 
         if error is None:
-            try:
-                user = User(username = username, password = generate_password_hash(password))
-                db.session.add(user)
-                db.session.commit()
-            except db.IntegrityError:
-                error = f'User {username} is already registered. Please pick a different username.'
+            user = db.session.execute(db.select(User).filter_by(username=username)).scalar_one()
+            if user is None or check_password_hash(user['password'], password) is False:
+                error = 'Incorrect username or password. Please try again.'
             else:
                 return redirect(url_for('dashboard'))
 
@@ -94,10 +91,10 @@ def register():
 
         if error is None:
             try:
-                user = User(username = username, password = generate_password_hash(password))
+                user = User(username=username, password=generate_password_hash(password))
                 db.session.add(user)
                 db.session.commit()
-            except db.IntegrityError:
+            except db.exc.IntegrityError:
                 error = f'User {username} is already registered. Please pick a different username.'
             else:
                 return redirect(url_for('dashboard'))
