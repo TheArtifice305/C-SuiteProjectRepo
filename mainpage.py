@@ -56,11 +56,15 @@ def login():
             error = "Please enter a password."
 
         if error is None:
-            user = db.session.execute(db.select(User).filter_by(username=username)).scalar_one()
-            if user is None or check_password_hash(user['password'], password) is False:
+            try:
+                user = db.session.execute(db.select(User).filter_by(username=username)).scalar_one()
+            except db.exc.NoResultFound:
                 error = 'Incorrect username or password. Please try again.'
             else:
-                return redirect(url_for('dashboard'))
+                if check_password_hash(user.password, password) is False:
+                    error = 'Incorrect username or password. Please try again.'
+                else:
+                    return redirect(url_for('dashboard'))
 
         flash(error)
     return render_template('login.html')
