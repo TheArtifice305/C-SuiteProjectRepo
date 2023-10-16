@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% extends 'base.html' %}
+    {% block head %}
     <title>Home</title>
+    {% endblock%}
 </head>
 <body>
     <h1>Eigel Center Project Page</h1>
-    <a href="{{url_for('login')}}">Login Here!</a><br>
-    <a href="{{url_for('register')}}">Register Here!</a><br>
-    <a href="{{url_for('post')}}">Post Testing Here!</a><br>
+    {% block body %}
+    <a href="{{url_for('login')}}">Login here!</a><br>
+    <a href="{{url_for('register')}}">Register here!</a><br>
+    <a href="{{url_for('new_post')}}">Post testing here!</a><br>
+    <a href="{{url_for('posts')}}">To see all posts, click here!</a><br>
+    {% endblock%}
 </body>
 </html>
