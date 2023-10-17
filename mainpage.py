@@ -32,9 +32,20 @@ class Opportunity(db.Model):
     description = db.Column(db.String(99999), nullable=False)
     datetime = db.Column(db.DateTime)
 
+class poster(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(100), nullable=False, unique=True)
+    content = db.Column(db.Text, nullable=False)
+    posted_by = db.Column(db.String(20), nullable=False, default='N/A')
+    posted_on = db.Column(db.DateTime, nullable=False, default=datetime.utcnow())
+    
+    def __repr__(self):
+        return self.title
+
 
 with mainpage.app_context():
     db.create_all()
+    db.session.commit()
 
 
 @mainpage.route('/')
@@ -107,9 +118,53 @@ def register():
 
     return render_template('register.html')
 
-@mainpage.route('/post_testing', methods=['GET', 'POST'])
-def post():
-    return render_template('post_testing.html')
+@mainpage.route('/posts',  methods=['GET', 'POST'])
+def posts():
+    if request.method == 'POST':
+        post_title = request.form['title']
+        post_content = request.form['post']
+        post_author = request.form['author']
+        new_post = poster(title=post_title,
+                        content=post_content, posted_by=post_author)
+        db.session.add(new_post)
+        db.session.commit()
+        return redirect('/posts')
+    else:
+        all_posts = poster.query.order_by(poster.posted_on).all()
+        return render_template('posts.html', posts=all_posts)
 
+@mainpage.route('/post/new', methods=['GET', 'POST'])
+def new_post():
+    if request.method == 'POST':
+        post_title = request.form['title']
+        post_content = request.form['post']
+        post_author = request.form['author']
+        new_post = poster(title=post_title,
+                        content=post_content, posted_by=post_author)
+        db.session.add(new_post)
+        db.session.commit()
+        return redirect('/post')
+    else:
+        return render_template('new_post.html')
+    
+@mainpage.route('/posts/edit/<int:id>', methods=['GET', 'POST'])
+def edit(id):
+    to_edit = poster.query.get_or_404(id)
+    if request.method == 'POST':
+        to_edit.title = request.form['title']
+        to_edit.author = request.form['author']
+        to_edit.content = request.form['post']
+        db.session.commit()
+        return redirect('/posts')
+    else:
+        return render_template('edit.html', post=to_edit)
+    
+@mainpage.route('/posts/delete/<int:id>')
+def delete(id):
+    to_delete = poster.query.get_or_404(id)
+    db.session.delete(to_delete)
+    db.session.commit()
+    return redirect('/posts')
+    
 if __name__ == "__main__":
     mainpage.run(debug=True)
