@@ -8,10 +8,12 @@
 <h2>Edit:</h2>
 <form action="/posts/edit/{{post.id}}" method="POST">
     <label for="content">Title:</label>
-    <input class="form-control" type="text" name="title" id="title" value="{{post.title}}">
+    <input class="form-control" type="text" name="title" id="title"
+        value="{{post.title}}">
     <br>
     <label for="content">Author:</label>
-    <input class="form-control" type="text" name="author" id="author" value="{{post.author}}">
+    <input class="form-control" type="text" name="author" id="author"
+        value="{{post.author}}">
     <br>
     <label for="post">Post:</label>
     <textarea class="form-control" id="post" name="post" rows="3">{{post.content}}</textarea>

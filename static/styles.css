@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+html {
+    font-family:sans-serif;
+}
+
+.sidebar {
+    height: 99vh;
+    width: 10%;
+    background-color: #0C2340;
+    float: left;
+
+}
+
+.text {
+    height: 200px;
+    width: 200px;
+    size: 15px;
+    background-color: #D7D3CC;
+}
+
+.navbutton {
+    font-family:'Times New Roman', Times, serif;
+    color:#D7D3CC;
+    font-size: 25px;
+}
+
+.topbutton {
+    padding-top:10%;
+    font-family:'Times New Roman', Times, serif;
+    color:#D7D3CC;
+    font-size: 25px;
+}
+
+.mainwrapper {
+    background-color:rgb(255, 0, 0);
+    float: left;
+    color:white;
+
+}
+
+.header {
+    padding-left: 5%;
+    padding-top: 5%;
+    float: left;
+}
+
+/* xavier resources for colors and typography
+
+https://www.xavier.edu/brand/brand-graphic-identity/index
+
+*/
