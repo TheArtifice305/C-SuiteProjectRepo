@@ -15,7 +15,7 @@
 {% if post.author %}
 <small>Written By {{post.posted_by}} on {{post.posted_on}}</small>
 {% else%}
-<small>Written by Anonymous on {{post.posted_on}}</small>
+<small>Written by {{post.posted_by}} on {{post.posted_on}}</small>
 {% endif %}
 <p style="white-space: pre-wrap">{{post.content}}</p>
 <br>
