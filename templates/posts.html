@@ -4,26 +4,26 @@
 {% endblock%}
 {% block body %}
 <br>
-    <div>
-        <h1 style="display: inline">All Posts Here: </h1>
-        <a style="display: inline" class="btn btn-success float-right" href="/post/new">+ New Post</a>
-    </div>
-    <br>
-    <hr>
-    {% for post in posts%}
-    <h2>{{post.title}}</h2>
-    {% if post.author %}
-    <small>Written By {{post.posted_by}} on {{post.posted_on}}</small>
-    {% else%}
-    <small>Written by Anonymous on {{post.posted_on}}</small>
-    {% endif %}
-    <p style="white-space: pre-wrap">{{post.content}}</p>
-    <br>
-    <a href="/posts/delete/{{post.id}}"><img
-            src="https://qph.fs.quoracdn.net/main-qimg-83c6de25ed91d13a4f09fb5f11ca8853" height="50px" width="50px"></a>
-    <a href="/posts/edit/{{post.id}}"><img
-            src="https://www.2g-eng.com/wp-content/uploads/2016/01/design-engineering-icon-small.png" height="50px"
-            width="50px"></a>
-    <hr>
-    {% endfor %}
+<div>
+    <h1 style="display: inline">All Posts Here: </h1>
+    <a style="display: inline" class="btn btn-success float-right" href="/post/new">+ New Post</a>
+</div>
+<br>
+<hr>
+{% for post in posts%}
+<h2>{{post.title}}</h2>
+{% if post.author %}
+<small>Written By {{post.posted_by}} on {{post.posted_on}}</small>
+{% else%}
+<small>Written by Anonymous on {{post.posted_on}}</small>
+{% endif %}
+<p style="white-space: pre-wrap">{{post.content}}</p>
+<br>
+<a href="/posts/delete/{{post.id}}"><img src="https://qph.fs.quoracdn.net/main-qimg-83c6de25ed91d13a4f09fb5f11ca8853"
+        height="50px" width="50px"></a>
+<a href="/posts/edit/{{post.id}}"><img
+        src="https://www.2g-eng.com/wp-content/uploads/2016/01/design-engineering-icon-small.png" height="50px"
+        width="50px"></a>
+<hr>
+{% endfor %}
 {% endblock%}
