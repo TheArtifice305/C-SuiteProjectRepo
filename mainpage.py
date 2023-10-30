@@ -152,7 +152,7 @@ def edit(id):
     to_edit = poster.query.get_or_404(id)
     if request.method == 'POST':
         to_edit.title = request.form['title']
-        to_edit.author = request.form['author']
+        to_edit.posted_by = request.form['author']
         to_edit.content = request.form['post']
         db.session.commit()
         return redirect('/posts')
