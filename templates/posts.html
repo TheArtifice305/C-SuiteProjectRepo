@@ -13,10 +13,10 @@
 <hr>
 {% for post in posts%}
 <h2>{{post.title}}</h2>
-{% if post.author %}
-<small>Written By {{post.posted_by}} on {{post.posted_on}}</small>
+{% if post.posted_by %}
+<small>Written by {{post.posted_by}} on {{post.posted_on.strftime("%B %d, %Y at %I:%M %p UTC")}}</small>
 {% else%}
-<small>Written by Anonymous on {{post.posted_on}}</small>
+<small>Written by Anonymous on {{post.posted_on.strftime("%B %d, %Y at %I:%M %p UTC")}}</small>
 {% endif %}
 <p style="white-space: pre-wrap">{{post.content}}</p>
 <br>
