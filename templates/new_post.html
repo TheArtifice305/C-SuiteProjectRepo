@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="/static/styles.css" />
 {% extends 'base.html' %}
 {% block head %}
 <title>New Post</title>
@@ -6,7 +7,7 @@
 <h1>New Post</h1>
 <hr>
 <h2>New Post:</h2>
-<form action="/posts" method="POST">
+<form class="post-form" action="/posts" method="POST">
     <label for="title">Title:</label>
     <input class="form-control" type="text" name="title" id="title"
         placeholder="Enter Title" aria-label="Enter Title">
