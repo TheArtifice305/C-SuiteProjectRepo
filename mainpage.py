@@ -22,7 +22,7 @@ class User(db.Model):
     __tablename__ = 'users'
     user_id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(100), nullable=False, unique=True)
-    password = db.Column(db.String(100), nullable=False)
+    password = db.Column(db.Text)
 
 
 class Opportunity(db.Model):
@@ -32,6 +32,7 @@ class Opportunity(db.Model):
     title = db.Column(db.String(100), nullable=False)
     description = db.Column(db.String(99999), nullable=False)
     datetime = db.Column(db.DateTime)
+    occurance = db.Column(db.String(100))
 
 class poster(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -39,6 +40,7 @@ class poster(db.Model):
     content = db.Column(db.Text, nullable=False)
     posted_by = db.Column(db.String(20), nullable=False, default='N/A')
     posted_on = db.Column(db.DateTime, nullable=False)
+    occurance_from = db.Column(db.Text)
 
     def __repr__(self):
         return self.title
@@ -125,8 +127,10 @@ def posts():
         post_title = request.form['title']
         post_content = request.form['post']
         post_author = request.form['author']
+        post_occurance = request.form['occurance_from']
         new_post = poster(title=post_title,
-                          content=post_content, posted_by=post_author, posted_on=datetime.now(timezone('US/Eastern')))
+                          content=post_content, posted_by=post_author, posted_on=datetime.now(timezone('US/Eastern')), 
+                          occurance_from=post_occurance)
         db.session.add(new_post)
         db.session.commit()
         return redirect('/posts')
@@ -140,8 +144,10 @@ def new_post():
         post_title = request.form['title']
         post_content = request.form['post']
         post_author = request.form['author']
+        post_occurance = request.form['occurance_from']
         new_post = poster(title=post_title,
-                          content=post_content, posted_by=post_author, posted_on=datetime.now(timezone('US/Eastern')))
+                          content=post_content, posted_by=post_author, posted_on=datetime.now(timezone('US/Eastern')), 
+                          occurance_from=post_occurance)
         db.session.add(new_post)
         db.session.commit()
         return redirect('/post')
@@ -155,6 +161,7 @@ def edit(id):
         to_edit.title = request.form['title']
         to_edit.posted_by = request.form['author']
         to_edit.content = request.form['post']
+        to_edit.occurance_from = request.form['occurance_from']
         db.session.commit()
         return redirect('/posts')
     else:

@@ -2,19 +2,20 @@
 
 {% extends 'base.html' %}
 {% block head %}
-<title>Posts Page </title>
+<title>Opportunities Page </title>
 {% endblock%}
 {% block body %}
 <br>
 <div>
-    <h1 style="display: inline">All Posts Here: </h1>
+    <h1 style="display: inline">All Opportunities Here: </h1>
     <a style="display: inline" class="btn btn-success float-right"
-        href="/post/new">+ New Post</a>
+        href="/post/new">+ New Opportunities</a>
 </div>
 <br>
 <hr>
 {% for post in posts%}
 <h2>{{post.title}}</h2>
+<h3>Occurance: {{post.occurance_from}}</h3>
 {% if post.posted_by %}
 <small>Written by {{post.posted_by}} on {{post.posted_on.strftime("%B %d, %Y at %I:%M %p EST")}}</small>
 {% else%}

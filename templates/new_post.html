@@ -1,25 +1,25 @@
 <link rel="stylesheet" type="text/css" href="/static/styles.css" />
 {% extends 'base.html' %}
 {% block head %}
-<title>New Post</title>
+<title>New Opportunity</title>
 {% endblock%}
 {% block body %}
-<h1>New Post</h1>
+<h1>New Opportunity</h1>
 <hr>
-<h2>New Post:</h2>
-<form class="posts" action="/posts" method="POST">
+<h2>New Opportunity:</h2>
+<form class="post-form" action="/posts" method="POST">
     <label for="title">Title:</label>
-    <input class="form-control" type="text" name="title" id="title"
-        placeholder="Enter Title" aria-label="Enter Title">
+    <input class="form-control" type="text" name="title" id="title" placeholder="Enter Title" aria-label="Enter Title">
     <br>
     <label for="content">Author:</label>
-    <input class="form-control" type="text" name="author" id="author"
-        placeholder="Enter Author"
+    <input class="form-control" type="text" name="author" id="author" placeholder="Enter Author"
         aria-label=" Enter Author">
     <br>
-    <label for="post">Post:</label>
-    <textarea class="form-control" id="post" name="post"
-        placeholder="Enter Content" aria-label=" Enter Content"
+    <label for="occurance_from">Choose a meeting time for your opportunity:</label>
+    <input class="form-control" type="datetime-local" name="occurance_from" id="occurance_from"/>
+    <br>
+    <label for="post">Description:</label>
+    <textarea class="form-control" id="post" name="post" placeholder="Enter Content" aria-label=" Enter Content"
         rows="3"></textarea>
     <br>
     <input type="submit" value="Post">
