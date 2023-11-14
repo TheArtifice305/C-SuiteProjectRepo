@@ -39,7 +39,7 @@ html {
 
 }
 
-.post-form {
+.posts {
     float: left;
     padding-left: 15px;
 }
@@ -63,10 +63,11 @@ html {
       flex-direction: column;
     }
     .navbar {
-      width: 19.5%;
+      width: 35vh;
       height: 100vh;
       align-items: flex-start;
       float: left;
+      padding-right: 1px;
     }
 
 
@@ -75,7 +76,7 @@ html {
       padding-bottom: 0;
       border-bottom: 4px solid #464646;
     }
-    form input {
+    .form-input {
       margin-bottom: 0.7em;
     }
   }
