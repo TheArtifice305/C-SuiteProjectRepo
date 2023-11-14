@@ -15,6 +15,11 @@
     <input class="form-control" type="text" name="author" id="author"
         value="{{post.posted_by}}">
     <br>
+    <label for="occurance_from">Choose a meeting time for your opportunity:</label>
+    <input class="form-control" type="datetime-local" name="occurance_from" id="occurance_from" min="2023-01-01T00:00"
+        max="2024-06-30T00:00"
+        value="{{post.occurance_from}}">
+    <br>
     <label for="post">Post:</label>
     <textarea class="form-control" id="post" name="post" rows="3">{{post.content}}</textarea>
     <br>
