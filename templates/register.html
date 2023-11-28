@@ -1,5 +1,78 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">
+    <html>
+        <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        body {
+          margin: 0;
+          font-family: "Lato", sans-serif;
+        }
+        
+        .sidebar {
+          margin: 0;
+          padding: 0;
+          width: 200px;
+          background-color: #0C2340;
+          position: fixed;
+          height: 100%;
+          overflow: auto;
+        }
+        
+        .sidebar a {
+          display: block;
+          color: black;
+          padding: 16px;
+          text-decoration: none;
+        }
+         
+        .sidebar a.active {
+          background-color: #04AA6D;
+          color: white;
+        }
+        
+        .sidebar a:hover:not(.active) {
+          background-color: #555;
+          color: #60B9DE;
+        }
+        
+        div.content {
+          margin-left: 200px;
+          padding: 1px 16px;
+          height: 1000px;
+        }
+        
+        @media screen and (max-width: 700px) {
+          .sidebar {
+            width: 100%;
+            height: auto;
+            position: relative;
+          }
+          .sidebar a {float: left;}
+          div.content {margin-left: 0;}
+        }
+        
+        @media screen and (max-width: 400px) {
+          .sidebar a {
+            text-align: center;
+            float: none;
+          }
+        }
+        </style>
+        </head>
+        <body>
+        
+        <div class="sidebar">
+          <a href="{{url_for('home')}}">HOME</a>
+          <a href="{{url_for('login')}}">LOG IN</a>
+          <a href="#contact">VIEW PROFILE</a>
+          <a href="{{url_for('posts')}}">VIEW POSTS</a>
+          <a href="{{url_for('register')}}">REGISTER</a>
+          <a href="{{url_for('new_post')}}">MAKE A POST</a>
+        </div>
+        
+        </body>
+        </html>
 
     <head>
         <meta charset="UTF-8">
@@ -7,8 +80,19 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Register</title>
     </head>
+    <style width="200px">
+        body {
+          background-image: url('https://www.xavier.edu/zoom-backgrounds/images/zoom_x-pattern-5.jpg');
+        }
+        </style>
 
     <body>
+        <a href="{{url_for('home')}}">
+        <img width="300px" src= "https://www.xavier.edu/brand/images/new-logos/signature-logo-white.jpg" class="logo">
+    </a>
+    </body>
+
+    <body style="text-align:center; color: white;" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.xavier.edu%2Fzoom-backgrounds%2Findex&psig=AOvVaw0xxJtjjA7nTfEP8ZjQ3Ipw&ust=1699032858568000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLjt7uHspYIDFQAAAAAdAAAAABAF">
         <form method="post">
             <h1>Register Page</h1>
             <p>Welcome to the register page! This is where students or admins
