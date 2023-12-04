@@ -21,7 +21,7 @@
         
         .sidebar a {
           display: block;
-          color: black;
+          color: white;
           padding: 16px;
           text-decoration: none;
         }
@@ -63,7 +63,7 @@
         <body>
         
         <div class="sidebar">
-          <a class="active" href="#home">Home</a>
+          <a href="{{url_for('home')}}">HOME</a>
           <a href="{{url_for('login')}}">LOG IN</a>
           <a href="#contact">VIEW PROFILE</a>
           <a href="{{url_for('posts')}}">VIEW POSTS</a>

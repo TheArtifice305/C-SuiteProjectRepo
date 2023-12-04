@@ -1,32 +1,108 @@
-<link rel="stylesheet" type="text/css" href="/static/styles.css" />
-
-{% extends 'base.html' %}
 {% block head %}
-<title>Opportunities Page </title>
+<title>Posts Page </title>
 {% endblock%}
 {% block body %}
 <br>
-<div>
-    <h1 style="display: inline">All Opportunities Here: </h1>
+<div style="text-align:center; color: white;">
+    <h1 style="display: inline">All Posts Here: </h1>
     <a style="display: inline" class="btn btn-success float-right"
-        href="/post/new">+ New Opportunities</a>
+        href="/post/new">+ New Post</a>
 </div>
+<html>
+        <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+        body {
+        color: white;
+        text-align: center;
+          margin: 0;
+          font-family: "Lato", sans-serif;
+        }
+        
+        .sidebar {
+          margin: 0;
+          padding: 0;
+          width: 200px;
+          background-color: #0C2340;
+          position: fixed;
+          height: 100%;
+          overflow: auto;
+        }
+        
+        .sidebar a {
+          display: block;
+          color: white;
+          padding: 16px;
+          text-decoration: none;
+        }
+         
+        .sidebar a.active {
+          background-color: #04AA6D;
+          color: white;
+        }
+        
+        .sidebar a:hover:not(.active) {
+          background-color: #555;
+          color: #60B9DE;
+        }
+        
+        div.content {
+          margin-left: 200px;
+          padding: 1px 16px;
+          height: 1000px;
+        }
+        
+        @media screen and (max-width: 700px) {
+          .sidebar {
+            width: 100%;
+            height: auto;
+            position: relative;
+          }
+          .sidebar a {float: left;}
+          div.content {margin-left: 0;}
+        }
+        
+        @media screen and (max-width: 400px) {
+          .sidebar a {
+            text-align: center;
+            float: none;
+          }
+        }
+        </style>
+        </head>
+        <body>
+        
+        <div class="sidebar">
+          <a href="{{url_for('home')}}">HOME</a>
+          <a href="{{url_for('login')}}">LOG IN</a>
+          <a href="#contact">VIEW PROFILE</a>
+          <a href="{{url_for('posts')}}">VIEW POSTS</a>
+          <a href="{{url_for('register')}}">REGISTER</a>
+          <a href="{{url_for('new_post')}}">MAKE A POST</a>
+        </div>
+        
+        </body>
+        </html>
+<style width="200px">
+        body {
+          background-image: url('https://www.xavier.edu/zoom-backgrounds/images/zoom_x-pattern-5.jpg');
+        }
+        </style>
 <br>
 <hr>
 {% for post in posts%}
-<h2>{{post.title}}</h2>
-<h3>Occurance: {{post.occurance_from}}</h3>
+<h2 style="text-align:center;">{{post.title}}</h2>
 {% if post.posted_by %}
-<small>Written by {{post.posted_by}} on {{post.posted_on.strftime("%B %d, %Y at %I:%M %p EST")}}</small>
+<small style="text-align:center;">Written by {{post.posted_by}} on {{post.posted_on.strftime("%B %d, %Y at %I:%M %p UTC")}}</small>
 {% else%}
-<small>Written by Anonymous on {{post.posted_on.strftime("%B %d, %Y at %I:%M %p EST")}}</small>
+<small style="text-align:center;">Written by Anonymous on {{post.posted_on.strftime("%B %d, %Y at %I:%M %p UTC")}}</small>
 {% endif %}
 <p style="white-space: pre-wrap">{{post.content}}</p>
 <br>
-<a href="/posts/delete/{{post.id}}"><img
+<a href="/posts/delete/{{post.id}}" style="text-align:center;"><img
         src="/static/images/delete.png"
         height="50px" width="50px"></a>
-<a href="/posts/edit/{{post.id}}"><img
+<a href="/posts/edit/{{post.id}}" style="text-align:center;"><img
         src="/static/images/edit.png"
         height="50px"
         width="50px"></a>
