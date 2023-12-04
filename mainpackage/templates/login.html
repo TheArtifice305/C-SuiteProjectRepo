@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/html">
+<html lang="en">
     <html>
         <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -63,41 +63,40 @@
         <body>
         
         <div class="sidebar">
-          <a href="{{url_for('home')}}">HOME</a>
-          <a href="{{url_for('login')}}">LOG IN</a>
+          <a class="active" href="{{url_for('home')}}">Home</a>
+          <a href="{{url_for('authentication.login')}}">LOG IN</a>
           <a href="#contact">VIEW PROFILE</a>
-          <a href="{{url_for('posts')}}">VIEW POSTS</a>
-          <a href="{{url_for('register')}}">REGISTER</a>
-          <a href="{{url_for('new_post')}}">MAKE A POST</a>
+          <a href="{{url_for('opportunities.posts')}}">VIEW POSTS</a>
+          <a href="{{url_for('authentication.register')}}">REGISTER</a>
+          <a href="{{url_for('opportunities.new_post')}}">MAKE A POST</a>
         </div>
         
         </body>
         </html>
-
+        
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Register</title>
+        <title>Login</title>
     </head>
     <style width="200px">
         body {
           background-image: url('https://www.xavier.edu/zoom-backgrounds/images/zoom_x-pattern-5.jpg');
         }
         </style>
-
     <body>
         <a href="{{url_for('home')}}">
         <img width="300px" src= "https://www.xavier.edu/brand/images/new-logos/signature-logo-white.jpg" class="logo">
     </a>
     </body>
 
-    <body style="text-align:center; color: white;" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.xavier.edu%2Fzoom-backgrounds%2Findex&psig=AOvVaw0xxJtjjA7nTfEP8ZjQ3Ipw&ust=1699032858568000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLjt7uHspYIDFQAAAAAdAAAAABAF">
+    <body style="text-align:center; color: white;">
         <form method="post">
-            <h1>Register Page</h1>
-            <p>Welcome to the register page! This is where students or admins
-                will be able to
-                register and create their accounts.</p>
+            <h1 style="font-size:30px">Login Page</h1>
+            <p>Welcome to the login page! This is where students or admins will
+                be able to
+                log in to their accounts.</p>
             <p>Here, a student will enter a username and password. Emails may be
                 added further
                 down the line.
@@ -108,17 +107,16 @@
                 <div class="flash">{{message}}</div>
                 {% endfor %}
             </section>
-            <h3 style="font-size:25px; color:red">Username</h3>
-            <p style="font-family:verdana">Enter username here: </p>
-            <input name="username" id="username" required>
+            <h3 style="font-size:25px; color:red">Email</h3>
+            <p style="font-family:verdana">Enter Email here: </p>
+            <input name="email" id="email" required>
 
             <h4 style="font-size:25px; color:blue">Password</h4>
             <p style="font-family:'Courier New'">Enter password here: </p>
             <input name="password" input type="password" id="password" required>
 
-            <a href="{{ url_for('login') }}">Already have an account? Log in!</a>
-            <h5> <input type="submit" value="Register"></h5>
-        </form>
-    </body>
+            <a href="{{url_for('authentication.register')}}">Don't have an account? Sign Up!</a>
+            <h5> <input type="submit" value="Log in"></h5>
+          </body>
 
-</html>
+    </html>

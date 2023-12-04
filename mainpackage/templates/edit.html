@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/static/styles.css" />
+<link rel="stylesheet" type="text/css" href="/styles.css" />
 
 {% extends 'base.html' %}
 {% block head %}
@@ -8,7 +8,7 @@
 <h1>Editing Post: </h1>
 <hr>
 <h2>Edit:</h2>
-<form class="posts" action="/posts/edit/{{post.id}}" method="POST">
+<form class="posts" action="{{url_for('opportunities.edit', id=post.id)}}" method="POST">
     <label for="content">Title:</label>
     <input class="form-control" type="text" name="title" id="title"
         value="{{post.title}}">

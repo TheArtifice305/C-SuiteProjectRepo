@@ -1,0 +1,42 @@
+<link rel="stylesheet" type="text/css" href="/styles.css" />
+{% extends 'base.html' %}
+{% block head %}
+<title>Create New Account</title>
+{% endblock%}
+{% block body %}
+<h1>Edit Account of {{post.email}}</h1>
+<hr>
+    <h2></h2>
+<form class="post-form" action="{{url_for('admin.edit_or_delete_account', user_id=post.user_id)}}" method="POST">
+    <section class="content">
+                {% for message in get_flashed_messages() %}
+                <div class="flash">{{message}}</div>
+                {% endfor %}
+    </section>
+    <label for="Email:">Current email: {{post.email}}</label>
+    <br>
+    <label for="Role:">Current role: {{post.role}}</label>
+    <br>
+    <br>
+    <label for="Email:">Email:</label>
+    <input class="form-control" type="text" name="email" id="email" placeholder="Enter Email" aria-label="Enter Email"
+    value = {{post.email}}>
+    <br>
+    <label for="content">Password:</label>
+    <input class="form-control" type="password" name="password" id="password" placeholder="Enter password"
+        aria-label="Enter password">
+    <br>
+    <label for="Role">Choose a role for the user:</label>
+    <select id="role" input class="form-control" name="role" id="role">
+        <option value="student">Student</option>
+        <option value="community-partner">Community Partner</option>
+        <option value="admin">Admin</option>
+    </select>
+    <br>
+    <br>
+    <input type="submit" value="Submit">
+    <a style="display: inline" class="btn btn-danger float-right" onclick = "return confirm('Are you sure you would like to delete this account?');"
+        href="{{url_for('admin.delete_account', user_id=post.user_id)}}">Delete {{post.email}}</a>
+</form>
+<hr>
+{% endblock%}

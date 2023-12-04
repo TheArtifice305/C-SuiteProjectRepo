@@ -7,7 +7,7 @@
             rel="stylesheet">
         <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css"
             rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="/static/styles.css" />
+        <link rel="stylesheet" type="text/css" href="/styles.css" />
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
         {% block head %}
@@ -27,20 +27,20 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active" class="nav-text">
-                        <a class="nav-link" class="nav-text" href="/">Home <span class="sr-only"></span></a>
+                        <a class="nav-link" class="nav-text" href="{{url_for('home')}}">Home <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/dashboard">Dashboard <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/posts">Posts </a>
+                        <a class="nav-link" href="{{url_for('opportunities.posts')}}">Posts </a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#"
                             id="navbarDropdown" role="button"
                             data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
-                            Conact Us
+                            Contact Us
                         </a>
                         <div class="dropdown-menu"
                             aria-labelledby="navbarDropdown">
@@ -54,6 +54,14 @@
                         <a class="nav-link disabled" href="#" tabindex="-1"
                             aria-disabled="true">Disabled</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/logout">Log Out <span class="sr-only"></span></a>
+                    </li>
+                        {% if g.User.role == 'admin' %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin">Admin <span class="sr-only"></span></a>
+                            </li>
+                        {% endif %}
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="search"

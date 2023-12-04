@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/styles.css" />
+        {% extends 'base.html' %}
+        {% block head %}
+        <title>Home</title>
+        {% endblock%}
+    </head>
+    <body>
+        <h1>Eigel Center Project Page</h1>
+        {% block body %}
+        <div class="mainwrapper"><a href="{{url_for('authentication.login')}}">Login here!</a><br>
+        <a href="{{url_for('authentication.register')}}">Register here!</a><br>
+        <a href="{{url_for('opportunities.new_post')}}">Post an opportunity here!</a><br>
+        <a href="{{url_for('opportunities.posts')}}">To see opportunities, click here!</a><br>
+        {% endblock%}
+    </div>
+    </body>
+</html>
