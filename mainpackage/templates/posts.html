@@ -1,4 +1,4 @@
-<link rel="stylesheet" type="text/css" href="/static/styles.css" />
+<link rel="stylesheet" type="text/css" href="/styles.css" />
 
 {% extends 'base.html' %}
 {% block head %}
@@ -9,7 +9,7 @@
 <div>
     <h1 style="display: inline">All Opportunities Here: </h1>
     <a style="display: inline" class="btn btn-success float-right"
-        href="/post/new">+ New Opportunities</a>
+        href="{{url_for('opportunities.new_post')}}">+ New Opportunities</a>
 </div>
 <br>
 <hr>
@@ -23,10 +23,10 @@
 {% endif %}
 <p style="white-space: pre-wrap">{{post.content}}</p>
 <br>
-<a href="/posts/delete/{{post.id}}"><img
+<a href="{{url_for('opportunities.delete', id=post.id)}}"><img
         src="/static/images/delete.png"
         height="50px" width="50px"></a>
-<a href="/posts/edit/{{post.id}}"><img
+<a href="{{url_for('opportunities.edit', id=post.id)}}"><img
         src="/static/images/edit.png"
         height="50px"
         width="50px"></a>
