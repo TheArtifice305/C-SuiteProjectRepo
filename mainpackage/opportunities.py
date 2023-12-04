@@ -9,7 +9,6 @@ bp = Blueprint('opportunities', __name__, url_prefix='/posts')
 
 @bp.route('/', methods=['GET', 'POST'])
 @login_required
-@roles_required('admin', 'community-partner')
 def posts():
     if request.method == 'POST':
         post_title = request.form['title']
