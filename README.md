@@ -1,13 +1,21 @@
 # C-SuiteProjectRepo
 Web dev project for C-Suite.
 
-mainpage.py is where our main backend (python) code is at.
+The entire code is situated in a folder called mainpackage.
+This folder holds both our frontend and backend.
 
-Within templates, we've got frontend with font edits, colors, and etc.
-We've also got login and register working which, when successfully
-operating, will take the user to the dashboard.
-Posting is available now, complete with edit and delete. However,
-it is not tied to user sign in yet.
-Frontend work has been done.
+Python files are our backend work, while everything typically frontend can be found in templates.
+
+Static holds any style or images used that you may find.
+
+templates folder hold html files for register and login, which both work in logging in
+and registering the user.
+
+posts.html and new_post.html both hold code for the opportunities being shown and created.
+
+edit.html holds code for editing the opportunites posted.
+
+Files with the admin name in them all hold code for administration and partner
+logins. This is structured to show different pages depending on the role of the user.
 
 Work in progress...
