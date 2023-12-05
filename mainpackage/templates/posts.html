@@ -34,6 +34,14 @@
             height="50px"
             width="50px"></a>
 {% endif %}
+
+{% if g.User.role == 'student' %}
+    <a href="{{url_for('joinup')}}"><img
+            src="/static/images/join_now.png"
+            height="70px"
+            width="210px"></a>
+{% endif %}
+
 <hr>
 {% endfor %}
 {% endblock%}
