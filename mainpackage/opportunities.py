@@ -69,3 +69,8 @@ def delete(id):
     db.session.delete(to_delete)
     db.session.commit()
     return redirect(url_for('opportunities.posts'))
+
+@bp.route('/joinup')
+@login_required
+def joinup():
+    return render_template('joinup.html')
