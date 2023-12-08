@@ -18,4 +18,6 @@ edit.html holds code for editing the opportunites posted.
 Files with the admin name in them all hold code for administration and partner
 logins. This is structured to show different pages depending on the role of the user.
 
-Work in progress...
+Documentation and a walkthrough is provided in the Markdown folder below mainpackage.
+
+The project is currently in a "finished" state, but anyone is allowed and free to pick up where the developers left off.
