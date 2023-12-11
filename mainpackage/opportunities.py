@@ -1,6 +1,6 @@
-from flask import render_template, url_for, redirect, request, Blueprint
+from flask import render_template, url_for, redirect, request, Blueprint, g
 from mainpackage.authentication import login_required, role_required, roles_required
-from mainpackage import User, Opportunity, Poster, db
+from mainpackage import Poster, db
 from datetime import datetime
 from pytz import timezone
 
@@ -70,7 +70,21 @@ def delete(id):
     db.session.commit()
     return redirect(url_for('opportunities.posts'))
 
-@bp.route('/joinup')
+
+@bp.route('/joinup/<int:id>', methods=['GET', 'POST'])
 @login_required
-def joinup():
-    return render_template('joinup.html')
+@role_required('student')
+def joinup(id):
+    post = Poster.query.get_or_404(id)
+    g.User.joined_posts.append(post)
+    db.session.commit()
+    return redirect(url_for('opportunities.posts'))
+
+
+@bp.route('/deregister/<int:id>', methods=['GET', 'POST'])
+@login_required
+@role_required('student')
+def deregister(id):
+    g.User.joined_posts.remove(Poster.query.get_or_404(id))
+    db.session.commit()
+    return redirect(url_for('opportunities.posts'))

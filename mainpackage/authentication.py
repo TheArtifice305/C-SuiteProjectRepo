@@ -16,7 +16,6 @@ def register():
 
         if not email:
             error = "Please enter an email."
-
         elif not password:
             error = "Please enter a password."
 
@@ -45,7 +44,6 @@ def login():
 
         if not email:
             error = "Please enter an email address."
-
         elif not password:
             error = "Please enter a password."
 
@@ -61,6 +59,7 @@ def login():
                     session.clear()
                     session['user_id'] = user.user_id
                     return redirect(url_for('dashboard'))
+        flash(error)
     return render_template('login.html')
 
 
@@ -91,7 +90,9 @@ def login_required(view):
     return wrapped_view
 
 
-# ONLY USE STRINGS for role
+# ONLY USE STRINGS for parameter "role".
+# Role choices: 'student', 'community-partner', 'admin'.
+# Type these keywords exactly as they appear in order to use them.
 def role_required(role):
     def decorate_role(view):
         @functools.wraps(view)
@@ -103,7 +104,9 @@ def role_required(role):
     return decorate_role
 
 
-# ONLY USE STRINGS for role. Not tested
+# ONLY USE STRINGS for parameter "role".
+# Role choices: 'student', 'community-partner', 'admin'.
+# Type these keywords exactly as they appear in order to use them.
 def roles_required(role1, role2):
     def multiple_decorate_role(view):
         @functools.wraps(view)

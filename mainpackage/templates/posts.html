@@ -36,10 +36,15 @@
 {% endif %}
 
 {% if g.User.role == 'student' %}
-    <a href="{{url_for('opportunities.joinup')}}"><img
-            src="/static/images/join_now.png"
-            height="70px"
-            width="210px"></a>
+    {% if post not in g.User.joined_posts %}
+        <a href="{{url_for('opportunities.joinup', id=post.id)}}"><img
+                src="/static/images/join_now.png"
+                height="70px"
+                width="210px"></a>
+    {% else %}
+        <a style="display: inline" class="btn btn-danger float left"
+        href="{{url_for('opportunities.deregister', id=post.id)}}">Deregister</a>
+    {% endif %}
 {% endif %}
 
 <hr>

@@ -7,7 +7,7 @@
 <h1>Create New Account</h1>
 <hr>
     <h2></h2>
-<form class="post-form" action="/admin/create_account" method="POST">
+<form class="post-form" action="{{url_for('admin.create_account')}}" method="POST">
     <section class="content">
                 {% for message in get_flashed_messages() %}
                 <div class="flash">{{message}}</div>
@@ -21,7 +21,7 @@
         aria-label=" Enter password">
     <br>
     <label for="Role">Choose a role for the user:</label>
-    <select id="role" input class="form-control" name="role" id="role">
+    <select id="role" input class="form-control" name="role">
         <option value="student">Student</option>
         <option value="community-partner">Community Partner</option>
         <option value="admin">Admin</option>
